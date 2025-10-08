@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/CMakeFiles/phmap-populate"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/CMakeFiles/phmap-populate.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/CMakeFiles/phmap-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-build.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-download.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-install.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-test.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/phmap-subbuild/phmap-populate-prefix/src/phmap-populate-stamp/phmap-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"phmap-populate"
+		],
+		"name" : "phmap-populate"
+	}
+}

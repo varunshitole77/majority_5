@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-build.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-download.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-install.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-test.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"kitty-populate"
+		],
+		"name" : "kitty-populate"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/CMakeFiles/percy-populate"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/CMakeFiles/percy-populate.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/CMakeFiles/percy-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-build.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-download.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-install.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-test.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/percy-subbuild/percy-populate-prefix/src/percy-populate-stamp/percy-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"percy-populate"
+		],
+		"name" : "percy-populate"
+	}
+}

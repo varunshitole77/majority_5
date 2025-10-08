@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/CMakeFiles/bill-populate"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/CMakeFiles/bill-populate.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/CMakeFiles/bill-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-build.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-download.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-install.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-test.rule"
+		},
+		{
+			"file" : "/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/bill-subbuild/bill-populate-prefix/src/bill-populate-stamp/bill-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bill-populate"
+		],
+		"name" : "bill-populate"
+	}
+}

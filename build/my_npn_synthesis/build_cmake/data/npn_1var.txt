@@ -1,0 +1,8 @@
+CLASS 00
+G0 = MAJ(0,0,0)
+OUTPUT = G0
+---
+CLASS 10
+G0 = MAJ(x0',0,1)
+OUTPUT = G0
+---

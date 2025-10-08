@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cut_enumeration.dir/cut_enumeration.cpp.o -o cut_enumeration  ../lib/abcsat/liblibabcsat.a ../lib/abcesop/liblibabcesop.a

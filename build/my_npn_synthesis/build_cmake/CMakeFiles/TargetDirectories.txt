@@ -1,0 +1,8 @@
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/main.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/compute_n1.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/compute_n2.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/compute_n3.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/compute_n4.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/compute_n5.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/edit_cache.dir
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/CMakeFiles/rebuild_cache.dir

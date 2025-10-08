@@ -1,0 +1,14 @@
+# Target labels
+ kitty-populate
+# Source files and their labels
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/CMakeFiles/kitty-populate-complete.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-build.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-configure.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-download.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-install.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-mkdir.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-patch.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-test.rule
+/Users/varunshitole/Desktop/mockturtle-master/build/my_npn_synthesis/build_cmake/_deps/kitty-subbuild/kitty-populate-prefix/src/kitty-populate-stamp/kitty-populate-update.rule

@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/fuzz_abc.dir/fuzz_abc.cpp.o -o fuzz_abc  ../lib/abcsat/liblibabcsat.a ../lib/abcesop/liblibabcesop.a

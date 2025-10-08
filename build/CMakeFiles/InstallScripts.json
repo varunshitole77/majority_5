@@ -1,0 +1,12 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/varunshitole/Desktop/mockturtle-master/build/cmake_install.cmake",
+		"/Users/varunshitole/Desktop/mockturtle-master/build/include/cmake_install.cmake",
+		"/Users/varunshitole/Desktop/mockturtle-master/build/lib/cmake_install.cmake",
+		"/Users/varunshitole/Desktop/mockturtle-master/build/lib/abcsat/cmake_install.cmake",
+		"/Users/varunshitole/Desktop/mockturtle-master/build/lib/abcesop/cmake_install.cmake",
+		"/Users/varunshitole/Desktop/mockturtle-master/build/examples/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
