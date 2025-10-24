@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '23 11 * * 5'  # every Friday at 11:23 UTC
+    - cron: '23 11 * * 5'
 
 jobs:
   analyze:
@@ -23,39 +23,38 @@ jobs:
       matrix:
         language: [ 'cpp' ]
 
+    env:
+      CODEQL_ACTION_AUTO_BUILD: false
+      CODEQL_EXTRACTOR_CPP_AUTOBUILD: false
+      CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
+
     steps:
-    # ------------------------------------------------------------
-    # 1️ Checkout repository (with submodules)
-    # ------------------------------------------------------------
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        submodules: recursive   # ensures all _deps and submodules are fetched
+        submodules: recursive
 
-    # ------------------------------------------------------------
-    # 2️ Initialize CodeQL (v3)
-    # ------------------------------------------------------------
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        # Optional: include extended rules
-        # queries: +security-extended
 
-    # ------------------------------------------------------------
-    # 3️ Install dependencies and build manually using CMake
-    # ------------------------------------------------------------
     - name: Build project manually using CMake
       run: |
-        echo " Installing build tools..."
         sudo apt-get update -y
         sudo apt-get install -y build-essential cmake git
 
-        echo " Initializing submodules (in case .gitmodules missing URLs)..."
         git submodule sync || true
         git submodule update --init --recursive || true
 
-        echo " Creating build directory and running CMake..."
+        if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
+          mkdir -p build/my_npn_synthesis/build_cmake/_deps
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
+          git submodule sync
+          git submodule update --init --recursive
+        fi
+
         mkdir -p build
         cd build
 
@@ -64,14 +63,8 @@ jobs:
               -DCATKIN_ENABLE_TESTING=OFF \
               -DBUILD_DOCUMENTATION=OFF ..
 
-        echo " Building the project..."
         make -j$(nproc)
-      env:
-        CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
 
-    # ------------------------------------------------------------
-    # 4️ Perform CodeQL analysis (v3)
-    # ------------------------------------------------------------
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
