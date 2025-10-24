@@ -29,10 +29,23 @@ jobs:
       CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repository (no submodules yet)
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
+
+    - name: Initialize submodules manually
+      run: |
+        echo "Fixing .gitmodules visibility and initializing submodules..."
+        git submodule sync || true
+        git submodule update --init --recursive || true
+
+        if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
+          echo "Manually adding bill-src submodule entry..."
+          mkdir -p build/my_npn_synthesis/build_cmake/_deps
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
+          git submodule sync
+          git submodule update --init --recursive
+        fi
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
@@ -43,20 +56,14 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y build-essential cmake git
-        git submodule sync || true
-        git submodule update --init --recursive || true
 
-        if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
-          mkdir -p build/my_npn_synthesis/build_cmake/_deps
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
-          git submodule sync
-          git submodule update --init --recursive
-        fi
-
+        echo "Starting manual CMake build..."
         mkdir -p build
         cd build
-        cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_DOCS=OFF -DCATKIN_ENABLE_TESTING=OFF -DBUILD_DOCUMENTATION=OFF ..
+        cmake -DCMAKE_BUILD_TYPE=Release \
+              -DBUILD_DOCS=OFF \
+              -DCATKIN_ENABLE_TESTING=OFF \
+              -DBUILD_DOCUMENTATION=OFF ..
         make -j$(nproc)
 
     - name: Perform CodeQL Analysis
