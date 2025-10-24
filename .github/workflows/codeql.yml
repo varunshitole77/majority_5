@@ -10,8 +10,9 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze C++ Code
     runs-on: ubuntu-latest
+
     permissions:
       actions: read
       contents: read
@@ -21,51 +22,57 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'cpp' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
 
     steps:
     # ------------------------------------------------------------
-    # 1️ Checkout repository
+    # 1️ Checkout repository (with submodules)
     # ------------------------------------------------------------
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        submodules: recursive   # ensures all _deps and submodules are fetched
 
     # ------------------------------------------------------------
-    # 2️ Initialize CodeQL
+    # 2️ Initialize CodeQL (v3)
     # ------------------------------------------------------------
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        # Optional: include extended security rules
+        # Optional: include extended rules
         # queries: +security-extended
 
     # ------------------------------------------------------------
-    # 3️ Manual CMake build (replaces autobuild)
+    # 3️ Install dependencies and build manually using CMake
     # ------------------------------------------------------------
     - name: Build project manually using CMake
       run: |
+        echo " Installing build tools..."
         sudo apt-get update -y
-        sudo apt-get install -y build-essential cmake
+        sudo apt-get install -y build-essential cmake git
 
+        echo " Initializing submodules (in case .gitmodules missing URLs)..."
+        git submodule sync || true
+        git submodule update --init --recursive || true
+
+        echo " Creating build directory and running CMake..."
         mkdir -p build
         cd build
 
-        # Configure project (disable docs/tests to simplify)
         cmake -DCMAKE_BUILD_TYPE=Release \
               -DBUILD_DOCS=OFF \
               -DCATKIN_ENABLE_TESTING=OFF \
               -DBUILD_DOCUMENTATION=OFF ..
 
-        # Compile your C++ targets
+        echo " Building the project..."
         make -j$(nproc)
       env:
         CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
 
     # ------------------------------------------------------------
-    # 4️ Run CodeQL static analysis
+    # 4️ Perform CodeQL analysis (v3)
     # ------------------------------------------------------------
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{ matrix.language }}"
