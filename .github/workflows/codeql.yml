@@ -1,0 +1,65 @@
+name: "CodeQL C++ Analysis"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '23 11 * * 5'
+
+jobs:
+  analyze:
+    name: Analyze C++ Code
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ]
+
+    env:
+      CODEQL_ACTION_AUTO_BUILD: false
+      CODEQL_EXTRACTOR_CPP_AUTOBUILD: false
+      CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Build project manually using CMake
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y build-essential cmake git
+        git submodule sync || true
+        git submodule update --init --recursive || true
+
+        if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
+          mkdir -p build/my_npn_synthesis/build_cmake/_deps
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
+          git submodule sync
+          git submodule update --init --recursive
+        fi
+
+        mkdir -p build
+        cd build
+        cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_DOCS=OFF -DCATKIN_ENABLE_TESTING=OFF -DBUILD_DOCUMENTATION=OFF ..
+        make -j$(nproc)
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{ matrix.language }}"
