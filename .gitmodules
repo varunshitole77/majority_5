@@ -9,3 +9,15 @@
 [submodule "build/my_npn_synthesis/build_cmake/_deps/percy-src"]
     path = build/my_npn_synthesis/build_cmake/_deps/percy-src
     url = https://github.com/lsils/percy.git
+
+[submodule "build/my_npn_synthesis/build_cmake/_deps/phmap-src"]
+    path = build/my_npn_synthesis/build_cmake/_deps/phmap-src
+    url = https://github.com/greg7mdp/parallel-hashmap.git
+
+[submodule "build/my_npn_synthesis/build_cmake/_deps/lorina-src"]
+    path = build/my_npn_synthesis/build_cmake/_deps/lorina-src
+    url = https://github.com/hriener/lorina.git
+
+[submodule "build/my_npn_synthesis/build_cmake/_deps/catch2-src"]
+    path = build/my_npn_synthesis/build_cmake/_deps/catch2-src
+    url = https://github.com/catchorg/Catch2.git
