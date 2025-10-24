@@ -29,58 +29,73 @@ jobs:
       CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: false
 
     steps:
-    - name: Checkout repository (no submodules yet)
+    # ------------------------------------------------------
+    # Checkout repository and submodules
+    # ------------------------------------------------------
+    - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        submodules: recursive
 
-    - name: Initialize submodules manually
+    - name: Initialize missing submodules (bill, kitty, percy, phmap, lorina, catch2)
       run: |
-        echo "Fixing .gitmodules visibility and initializing submodules..."
+        echo "Ensuring all required submodules are registered..."
         git submodule sync || true
-        git submodule update --init --recursive || true
 
-        # Add bill-src if missing
-        if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
-          echo "Manually adding bill-src submodule entry..."
-          mkdir -p build/my_npn_synthesis/build_cmake/_deps
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
-        fi
+        declare -A subs=(
+          ["bill-src"]="https://github.com/lsils/bill.git"
+          ["kitty-src"]="https://github.com/msoeken/kitty.git"
+          ["percy-src"]="https://github.com/lsils/percy.git"
+          ["phmap-src"]="https://github.com/greg7mdp/parallel-hashmap.git"
+          ["lorina-src"]="https://github.com/hriener/lorina.git"
+          ["catch2-src"]="https://github.com/catchorg/Catch2.git"
+        )
 
-        # Add kitty-src if missing
-        if ! grep -q "kitty-src" .gitmodules 2>/dev/null; then
-          echo "Manually adding kitty-src submodule entry..."
-          mkdir -p build/my_npn_synthesis/build_cmake/_deps
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/kitty-src.path build/my_npn_synthesis/build_cmake/_deps/kitty-src
-          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/kitty-src.url https://github.com/msoeken/kitty.git
-        fi
+        for name in "${!subs[@]}"; do
+          if ! grep -q "$name" .gitmodules 2>/dev/null; then
+            echo "Registering missing submodule: $name"
+            mkdir -p build/my_npn_synthesis/build_cmake/_deps
+            git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/${name}.path build/my_npn_synthesis/build_cmake/_deps/${name}
+            git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/${name}.url ${subs[$name]}
+          fi
+        done
 
         git submodule sync
         git submodule update --init --recursive
 
+    # ------------------------------------------------------
+    # Initialize CodeQL
+    # ------------------------------------------------------
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
 
-    - name: Clean old build cache
-      run: |
-        echo "Removing stale CMake cache..."
-        rm -rf build || true
-        mkdir build
-
+    # ------------------------------------------------------
+    # Clean and build manually with CMake
+    # ------------------------------------------------------
     - name: Build project manually using CMake
       run: |
         sudo apt-get update -y
         sudo apt-get install -y build-essential cmake git
 
-        echo "Starting clean CMake build..."
+        echo "Cleaning previous builds..."
+        rm -rf build || true
+        mkdir build
         cd build
+
+        echo "Starting clean CMake build..."
         cmake -DCMAKE_BUILD_TYPE=Release \
               -DBUILD_DOCS=OFF \
-              -DCATKIN_ENABLE_TESTING=OFF \
-              -DBUILD_DOCUMENTATION=OFF ..
+              -DBUILD_DOCUMENTATION=OFF \
+              -DMOCKTURTLE_BUILD_EXAMPLES=OFF \
+              -DMOCKTURTLE_BUILD_TESTS=OFF \
+              -DMOCKTURTLE_BUILD_EXPERIMENTS=OFF ..
         make -j$(nproc)
 
+    # ------------------------------------------------------
+    # Perform CodeQL analysis
+    # ------------------------------------------------------
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
