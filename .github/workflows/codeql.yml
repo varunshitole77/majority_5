@@ -38,27 +38,42 @@ jobs:
         git submodule sync || true
         git submodule update --init --recursive || true
 
+        # Add bill-src if missing
         if ! grep -q "bill-src" .gitmodules 2>/dev/null; then
           echo "Manually adding bill-src submodule entry..."
           mkdir -p build/my_npn_synthesis/build_cmake/_deps
           git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.path build/my_npn_synthesis/build_cmake/_deps/bill-src
           git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/bill-src.url https://github.com/lsils/bill.git
-          git submodule sync
-          git submodule update --init --recursive
         fi
+
+        # Add kitty-src if missing
+        if ! grep -q "kitty-src" .gitmodules 2>/dev/null; then
+          echo "Manually adding kitty-src submodule entry..."
+          mkdir -p build/my_npn_synthesis/build_cmake/_deps
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/kitty-src.path build/my_npn_synthesis/build_cmake/_deps/kitty-src
+          git config -f .gitmodules submodule.build/my_npn_synthesis/build_cmake/_deps/kitty-src.url https://github.com/msoeken/kitty.git
+        fi
+
+        git submodule sync
+        git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
 
+    - name: Clean old build cache
+      run: |
+        echo "Removing stale CMake cache..."
+        rm -rf build || true
+        mkdir build
+
     - name: Build project manually using CMake
       run: |
         sudo apt-get update -y
         sudo apt-get install -y build-essential cmake git
 
-        echo "Starting manual CMake build..."
-        mkdir -p build
+        echo "Starting clean CMake build..."
         cd build
         cmake -DCMAKE_BUILD_TYPE=Release \
               -DBUILD_DOCS=OFF \
