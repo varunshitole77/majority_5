@@ -1,0 +1,3 @@
+[submodule "build/my_npn_synthesis/build_cmake/_deps/bill-src"]
+    path = build/my_npn_synthesis/build_cmake/_deps/bill-src
+    url = https://github.com/lsils/bill.git
